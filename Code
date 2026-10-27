@@ -1,0 +1,43 @@
+class Student {
+  String name;
+  int age;
+  String course;
+
+  Student(this.name, this.age, this.course);
+
+  void displayInfo() {
+    print("Student Name: $name");
+    print("Age: $age");
+    print("Course: $course");
+  }
+
+  Future<String> saveStudent() async {
+    print("Saving student record...");
+
+    await Future.delayed(Duration(seconds: 2));
+
+    return "Student record saved successfully!";
+  }
+}
+
+Future<void> main() async {
+  Student student1 = Student(
+    "Rafael S. Ebrada",
+    20,
+    "BS Information Technology",
+  );
+
+  print("=== NTC STUDENT INFORMATION ===");
+  student1.displayInfo();
+
+  print("\nStarting the saving process...");
+
+  Future<String> result = student1.saveStudent();
+
+  print("This message appears before saving finishes.");
+
+  String message = await result;
+
+  print(message);
+  print("Program completed!");
+}
